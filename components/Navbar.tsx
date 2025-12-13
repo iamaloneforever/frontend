@@ -29,7 +29,6 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBurger,
-  faCircleXmark,
   faHeart,
 } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "./ui/button";
@@ -115,7 +114,7 @@ export default function Navbar() {
               </Button>
             </div>
           </SheetTrigger>
-          <SheetContent side={"left"} className="[&>button:last-child]:hidden ">
+          <SheetContent side={"left"} className="">
             <SheetHeader>
               <SheetTitle>Menu</SheetTitle>
               <SheetDescription>
@@ -144,11 +143,6 @@ export default function Navbar() {
               Support us
             </Button>
 
-            <SheetClose asChild className="top-5 absolute right-5">
-              <Button size={"icon-lg"} className="bg-red-500 hover:bg-red-400">
-                <FontAwesomeIcon icon={faCircleXmark} />
-              </Button>
-            </SheetClose>
           </SheetContent>
         </Sheet>
       </div>
