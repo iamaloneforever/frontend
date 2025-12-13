@@ -57,7 +57,7 @@ export default function Navbar() {
   });
   
   return (
-    <div className="p-5 flex items-center justify-between bg-white shadow-md">
+    <div className="p-5 fixed w-full top-0 z-10 flex items-center justify-between bg-white shadow-md">
       <div>
         <h1 className="text-2xl font-bold Brand text-blue-500">Amir Shoes</h1>
       </div>

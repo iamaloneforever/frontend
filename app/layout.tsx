@@ -5,9 +5,9 @@ import Navbar from "../components/Navbar"
 import Fotter from "@/components/Fotter";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
-import { SplitText } from "gsap/all";
+import { ScrollTrigger, SplitText } from "gsap/all";
 
-gsap.registerPlugin(useGSAP,SplitText);
+gsap.registerPlugin(useGSAP,SplitText,ScrollTrigger);
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
