@@ -37,7 +37,10 @@ import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/all";
 import gsap from "gsap";
 import {motion} from "motion/react"
-const MotionButton = motion(Button);
+
+const MotionButton = motion.create(Button);
+
+
 export default function Navbar() {
   useGSAP(() => {
     const Brand = SplitText.create(".Brand", { type: "chars" });
