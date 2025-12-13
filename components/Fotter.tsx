@@ -24,7 +24,7 @@ export default function Fotter() {
     })
   })
   return (
-    <div className="bg-blue-400 fixed bottom-0   w-full gap-20 p-20 grid grid-cols-1 lg:grid-cols-2 text-white">
+    <div className="bg-blue-400  w-full gap-20 p-20 grid grid-cols-1 lg:grid-cols-2 text-white">
       <div className="flex items-center flex-col gap-2">
         <h1 className="text-2xl font-bold title">Amir Shoes</h1>
         <p className="text-sm text-gray-300 ">A Store</p>
