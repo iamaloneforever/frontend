@@ -10,6 +10,7 @@ export default function page() {
         <Hero/>
         <ShowcaseProduct title='تخفیف خورده ها'/>
         <Benefits/>
+        <Ads imagepath='/image.png' Description='Fly With Nike'/>
         <ShowcaseProduct title='تخفیف خورده ها'/>
     </div>
   )
