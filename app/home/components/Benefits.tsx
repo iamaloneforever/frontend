@@ -48,6 +48,7 @@ useGSAP(() => {
           }}
           className="bg-green-600 CardA text-white"
         >
+          
           <CardHeader className="flex flex-col gap-10 items-center">
             <FontAwesomeIcon icon={faTruck} className="text-4xl" />
             <h1 className="text-2xl">سرعت در ارسال</h1>

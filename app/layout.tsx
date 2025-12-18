@@ -6,22 +6,9 @@ import Fotter from "@/components/Fotter";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger, SplitText } from "gsap/all";
+import { Toaster } from "sonner";
 
 gsap.registerPlugin(useGSAP,SplitText,ScrollTrigger);
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-export const metadata: Metadata = {
-  title: "Alone Shoes",
-  description: "A Market fro buying best shoes",
-};
 
 export default function RootLayout({
   children,
@@ -31,10 +18,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} min-h-screen ${geistMono.variable} antialiased`}
+        className={`antialiased`}
       >
         <Navbar/>
         {children}
+        <Toaster richColors  />
         <Fotter/>
       </body>
     </html>

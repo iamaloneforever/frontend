@@ -63,7 +63,7 @@ export default function Hero() {
     <Carousel>
       <CarouselContent className="Box">
         <CarouselItem>
-          <div className="bg-red-400 Text lg:h-[60vh]  h-[100vh] py-20 grid text-white grid-cols-1 gap-10 lg:grid-cols-2 w-full">
+          <div className="bg-red-400 Text lg:h-[80vh]  h-[100vh] py-20 grid text-white grid-cols-1 gap-10 lg:grid-cols-2 w-full">
             <div className="flex p-10 space-y-5 flex-wrap items-center flex-col justify-center">
               <h1 className="font-bold text-4xl">Fly With Addias</h1>
               <p className="text-sm text-center">
