@@ -5,8 +5,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { ShoppingCart } from "lucide-react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger, SplitText } from "gsap/all";
@@ -75,7 +74,7 @@ export default function Hero() {
                   size={"lg"}
                   className="bg-red-800 hover:bg-pink-700 hover:shadow-2xl shadow-pink-400 hover:scale-110"
                 >
-                  <FontAwesomeIcon size="lg" icon={faCartShopping} className="mb-1" />
+                  <ShoppingCart className="h-5 w-5 mb-1" />
                   <h1 className="font-bold">Buy Now</h1>
                 </Button>
               </div>
@@ -99,7 +98,7 @@ export default function Hero() {
                   size={"lg"}
                   className="bg-blue-800 hover:bg-blue-700 hover:shadow-2xl shadow-blue-400 hover:scale-110"
                 >
-                  <FontAwesomeIcon size="lg" icon={faCartShopping} className="mb-1" />
+                  <ShoppingCart className="h-5 w-5 mb-1" />
                   <h1 className="font-bold">Buy Now</h1>
                 </Button>
               </div>

@@ -1,6 +1,5 @@
 "use client";
-import { faGithub, faTelegram } from "@fortawesome/free-brands-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Github, Send } from "lucide-react";
 
 import React, { useEffect } from "react";
 import { motion } from "motion/react";
@@ -37,8 +36,8 @@ export default function Footer() {
         <h1 className="text-2xl font-bold title">Amir Shoes</h1>
         <p className="text-sm text-gray-300">A Store</p>
         <ul className="mt-5 space-x-5 *:text-xl *:cursor-pointer flex">
-          <FontAwesomeIcon icon={faGithub} />
-          <FontAwesomeIcon icon={faTelegram} />
+          <Github className="h-5 w-5" />
+          <Send className="h-5 w-5" />
         </ul>
       </div>
       <div className="grid grid-cols-2">

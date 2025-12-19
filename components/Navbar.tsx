@@ -26,11 +26,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faBurger,
-  faHeart,
-} from "@fortawesome/free-solid-svg-icons";
+import { Menu, Heart } from "lucide-react";
 import { Button } from "./ui/button";
 import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/all";
@@ -110,7 +106,7 @@ export default function Navbar() {
                 size={"icon-lg"}
                 className="bg-blue-500  hover:bg-blue-400"
               >
-                <FontAwesomeIcon icon={faBurger}></FontAwesomeIcon>
+                <Menu className="h-5 w-5" />
               </Button>
             </div>
           </SheetTrigger>
@@ -139,7 +135,7 @@ export default function Navbar() {
               </AccordionItem>
             </Accordion>
             <Button className="bg-gradient-to-r  from-pink-400 mx-10 to-pink-600 hover:to-pink-700 hover:from-pink-500 text-white">
-              <FontAwesomeIcon icon={faHeart} className="mb-1" />
+              <Heart className="h-4 w-4 mb-1" />
               Support us
             </Button>
 

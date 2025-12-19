@@ -14,8 +14,7 @@ import {
 } from "@/components/ui/card";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { ShoppingCart } from "lucide-react";
 
 interface ShowProductProps {
     title:string
@@ -63,7 +62,7 @@ export default function ShowcaseProduct({title}:ShowProductProps) {
               </CardContent>
               <CardFooter className="flex justify-center">
                 <Button size="lg" className="bg-blue-500 hover:bg-blue-400">
-                  <FontAwesomeIcon icon={faCartShopping} size="lg" className="mb-1" />{" "}
+                  <ShoppingCart className="h-5 w-5 mb-1" />{" "}
                   Buy Now
                 </Button>
               </CardFooter>

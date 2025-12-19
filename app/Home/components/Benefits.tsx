@@ -1,12 +1,6 @@
 "use client";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import {
-  faFaceGrinHearts,
-  faShield,
-  faShoppingCart,
-  faTruck,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Truck, HeartHandshake, Shield } from "lucide-react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { motion } from "motion/react";
@@ -50,7 +44,7 @@ useGSAP(() => {
         >
           
           <CardHeader className="flex flex-col gap-10 items-center">
-            <FontAwesomeIcon icon={faTruck} className="text-4xl" />
+            <Truck className="h-10 w-10" />
             <h1 className="text-2xl">سرعت در ارسال</h1>
           </CardHeader>
         </MotionCard>
@@ -67,7 +61,7 @@ useGSAP(() => {
           }}
         >
           <CardContent className="flex flex-col  gap-10 h-full justify-center items-center">
-            <FontAwesomeIcon icon={faFaceGrinHearts} className="text-4xl" />
+            <HeartHandshake className="h-10 w-10" />
             <h1 className="text-2xl">اطمینان</h1>
           </CardContent>
         </MotionCard>
@@ -84,7 +78,7 @@ useGSAP(() => {
           }}
         >
           <CardHeader className="flex flex-col gap-10 items-center">
-            <FontAwesomeIcon icon={faShield} className="text-4xl" />
+            <Shield className="h-10 w-10" />
             <h1 className="text-2xl">سلامت کالا</h1>
           </CardHeader>
         </MotionCard>

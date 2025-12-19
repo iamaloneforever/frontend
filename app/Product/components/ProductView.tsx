@@ -13,17 +13,7 @@ import {
   CardHeader,
 } from "@/components/ui/card";
 import Image from "next/image";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faAlarmClock,
-  faBox,
-  faComment,
-  faFire,
-  faHeart,
-  faShare,
-  faShieldHalved,
-  faTruck,
-} from "@fortawesome/free-solid-svg-icons";
+import { Heart, Share2, MessageCircle, Flame, Truck, Shield, Package } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
@@ -85,13 +75,13 @@ export default function ProductView() {
         <CardContent>
           <ul className="flex justify-between text-xl">
             <li>
-              <FontAwesomeIcon icon={faHeart} />
+              <Heart className="h-5 w-5" />
             </li>
             <li>
-              <FontAwesomeIcon icon={faShare} />
+              <Share2 className="h-5 w-5" />
             </li>
             <li>
-              <FontAwesomeIcon icon={faComment} />
+              <MessageCircle className="h-5 w-5" />
             </li>
           </ul>
         </CardContent>
@@ -101,11 +91,11 @@ export default function ProductView() {
         <div className="flex justify-between">
           <Badge variant="outline">۱ دیدگاه</Badge>
           <Badge className="bg-red-600 flex gap-2">
-            <FontAwesomeIcon icon={faFire} />
+            <Flame className="h-4 w-4" />
             پرطرفدار
           </Badge>
           <Badge variant={"outline"} className="lg:hidden">
-          <FontAwesomeIcon icon={faTruck} className="mr-1 " />
+          <Truck className="h-4 w-4 mr-1" />
           ارسال فوری
           </Badge>
         </div>
@@ -143,7 +133,7 @@ export default function ProductView() {
           <div className="flex justify-between">
             <h1 className="text-xl font-bold">Nike Model 1012</h1>
             <Badge variant="secondary" className="max-h-10">
-              <FontAwesomeIcon icon={faTruck} />
+              <Truck className="h-4 w-4" />
               ارسال سریع
             </Badge>
           </div>
@@ -174,7 +164,7 @@ export default function ProductView() {
 
           <div className="flex items-center justify-end gap-3">
             <span>۷ روز ضمانت بازگشت</span>
-            <FontAwesomeIcon icon={faShieldHalved} />
+            <Shield className="h-5 w-5" />
           </div>
 
           <Separator className="my-4" />
@@ -184,7 +174,7 @@ export default function ProductView() {
               <DialogTrigger asChild>
                 <Button variant="ghost" className="flex gap-3">
                   روش‌های ارسال
-                  <FontAwesomeIcon icon={faBox} />
+                  <Package className="h-4 w-4" />
                 </Button>
               </DialogTrigger>
 
