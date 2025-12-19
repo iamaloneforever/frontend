@@ -2,7 +2,7 @@
 import { create } from "zustand";
 
 export interface User {
-  id: string;
+  id: number;
   name: string;
   email: string;
   avatar: string;
@@ -18,12 +18,12 @@ interface UserStore {
 
 export const useUserStore = create<UserStore>((set) => ({
   user: {
-    id: "1",
-    name: "Amir",
-    email: "amir@example.com",
-    avatar: "/avatars/amir.jpg",
+    id:1,
+    name:"amir",
+    email: "amir",
+    avatar: "./"
   },
-  isAuthenticated: true,
+  isAuthenticated: false,
 
   login: (userData) => {
     set({

@@ -26,7 +26,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Menu, Heart, CircleUser, ShoppingBag,  } from "lucide-react";
+import { Menu, Heart, CircleUser, ShoppingBag, LogIn } from "lucide-react";
 import { Button } from "./ui/button";
 import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/all";
@@ -44,12 +44,22 @@ export default function Navbar() {
     state.cartItems.reduce((total, item) => total + item.quantity, 0)
   );
   const user = useUserStore((state) => state.user);
+
   useGSAP(() => {
+    const mm = gsap.matchMedia();
     const Brand = SplitText.create(".Brand", { type: "chars" });
     const t1 = gsap.timeline();
     t1.from(Brand.chars, {
       y: 20,
       stagger: 0.04,
+    });
+    mm.add("(min-width: 1024px)", () => {
+      t1.from(".MenuTD", {
+        y: 50,
+        opacity: 0,
+        duration: 1,
+        stagger: 0.3,
+      });
     });
     t1.from(".MenuT", {
       y: 50,
@@ -71,7 +81,7 @@ export default function Navbar() {
         <NavigationMenu viewport={false}>
           <NavigationMenuList className="flex gap-4">
             <NavigationMenuItem>
-              <NavigationMenuTrigger className="transition-colors MenuT duration-200">
+              <NavigationMenuTrigger className="transition-colors MenuTD duration-200">
                 Brands
               </NavigationMenuTrigger>
               <NavigationMenuContent>
@@ -85,7 +95,7 @@ export default function Navbar() {
             </NavigationMenuItem>
 
             <NavigationMenuItem>
-              <NavigationMenuTrigger className="transition-colors duration-200 MenuT">
+              <NavigationMenuTrigger className="transition-colors duration-200 MenuTD">
                 Company
               </NavigationMenuTrigger>
               <NavigationMenuContent>
@@ -99,7 +109,7 @@ export default function Navbar() {
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
-        <div className="MenuT">
+        <div className="MenuTD">
           <MotionButton
             initial={{ scale: 1 }}
             whileHover={{ scale: 1.1 }}
@@ -108,34 +118,54 @@ export default function Navbar() {
             Support Us
           </MotionButton>
         </div>
-        <Button variant={"outline"}>
-          <CircleUser />
-          {user?.name || "Guest"}
-        </Button>
-        <Button variant={"ghost"} className="relative">
-          <ShoppingBag/>
-          {cartCount > 0 && (
-            <Badge className="absolute -top-2 -right-2 h-5 min-w-5 flex items-center justify-center px-1 text-xs">
-              {cartCount > 99 ? "99+" : cartCount}
-            </Badge>
-          )}
-          Cart
-        </Button>
+        <div className="MenuTD">
+          <Button variant={"outline"}>
+            <CircleUser />
+            {user?.name || "Guest"}
+          </Button>
+        </div>
+        <div className="MenuTD">
+          <Button variant={"ghost"} className="relative">
+            <ShoppingBag />
+            {cartCount > 0 && (
+              <Badge className="absolute -top-2 -right-2 h-5 min-w-5 flex items-center justify-center px-1 text-xs">
+                {cartCount > 99 ? "99+" : cartCount}
+              </Badge>
+            )}
+            Cart
+          </Button>
+        </div>
       </div>
 
       <div className="flex lg:hidden gap-4 items-center">
-        <Button variant={"outline"}>
-          <CircleUser />
-          {user?.name || "Guest"}
-        </Button>
-        <Button variant={"ghost"} className="relative">
-          <ShoppingBag/>
-          {cartCount > 0 && (
-            <Badge className="absolute -top-2 -right-2 h-5 min-w-5 flex items-center justify-center px-1 text-xs">
-              {cartCount > 99 ? "99+" : cartCount}
-            </Badge>
+        <div className="MenuT">
+          {user ? (
+            <Button variant={"outline"} asChild>
+              <Link href="/dashboard">
+                {" "}
+                <CircleUser /> {user.name}
+              </Link>
+            </Button>
+          ) : (
+            <Button variant={"outline"} asChild>
+              <Link href="/auth/login">
+                <LogIn />
+                Login
+              </Link>
+            </Button>
           )}
-        </Button>
+        </div>
+        <div className="MenuT">
+          <Button variant={"ghost"} className="relative">
+            <ShoppingBag />
+            {cartCount > 0 && (
+              <Badge className="absolute -top-2 -right-2 h-5 min-w-5 flex items-center justify-center px-1 text-xs">
+                {cartCount > 99 ? "99+" : cartCount}
+              </Badge>
+            )}
+          </Button>
+        </div>
+
         <Sheet>
           <SheetTrigger asChild>
             <div className="MenuT">
