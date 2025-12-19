@@ -1,5 +1,7 @@
 import Details from "../components/Details";
 import ProductView from "../components/ProductView";
+import { Charts } from "../components/Charts";
+import { Separator } from "@/components/ui/separator";
 
 interface ProductPageProps {
   params: {
@@ -26,8 +28,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
   return (
     <div className="my-20 min-h-screen">
       <ProductView/>
+      <Separator className="my-10"/>
       <Details/>
-      
+      <Separator className="my-10"/>
+      <Charts/>
     </div>
   );
 }
