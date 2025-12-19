@@ -3,6 +3,7 @@ import ProductView from "../components/ProductView";
 import { Charts } from "../components/Charts";
 import { Separator } from "@/components/ui/separator";
 import Scene from "../components/ShoeModel";
+import Comment from "../components/Comment";
 
 interface ProductPageProps {
   params: {
@@ -25,15 +26,16 @@ export async function generateMetadata({ params }: ProductPageProps) {
   };
 }
 export default async function ProductPage({ params }: ProductPageProps) {
-
   return (
     <div className="my-20 min-h-screen">
-      <ProductView/>
-      <Separator className="my-10"/>
-      <Details/>
-      <Separator className="my-10"/>
-      <Charts/>
-      <Scene/>
+      <ProductView />
+      <Separator className="my-10" />
+      <Details />
+      <Separator className="my-10" />
+      <Charts />
+      <Scene />
+      <Separator className="my-10" />
+      <Comment />
     </div>
   );
 }
