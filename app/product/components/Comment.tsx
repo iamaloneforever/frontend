@@ -89,7 +89,7 @@ export default function Comment() {
                   </FormItem>
                 )}
               />
-              <Separator className="my-4" />
+             
               <FormField
                 control={form.control}
                 name="Content"
@@ -108,6 +108,7 @@ export default function Comment() {
                   </FormItem>
                 )}
               />
+               <Separator className="my-4" />
               <Button className="w-full mt-3">Sumbit</Button>
             </form>
           </Form>

@@ -15,6 +15,8 @@ import {
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ShoppingCart } from "lucide-react";
+import { useCartStore } from "@/context/CartContext";
+import { toast } from "sonner";
 
 interface ShowProductProps {
     title:string
@@ -22,6 +24,16 @@ interface ShowProductProps {
 
 export default function ShowcaseProduct({title}:ShowProductProps) {
   const items = ["hello", "world", "foo", "bar"];
+  const addToCart = useCartStore((state) => state.addToCart);
+
+  const handleAddToCart = (item: string, index: number) => {
+    addToCart({
+      id: `showcase-${index}`,
+      name: item,
+      price: 1000000 + (index * 100000), // Example pricing
+    });
+    toast.success("به سبد خرید اضافه شد");
+  };
 
   return (
     <div className="m-20">
@@ -61,7 +73,11 @@ export default function ShowcaseProduct({title}:ShowProductProps) {
                 </p>
               </CardContent>
               <CardFooter className="flex justify-center">
-                <Button size="lg" className="bg-blue-500 hover:bg-blue-400">
+                <Button 
+                  size="lg" 
+                  className="bg-blue-500 hover:bg-blue-400"
+                  onClick={() => handleAddToCart(item, id)}
+                >
                   <ShoppingCart className="h-5 w-5 mb-1" />{" "}
                   Buy Now
                 </Button>

@@ -17,13 +17,13 @@ import {
 import { NavMain } from "@/components/nav-main"
 import { NavProjects } from "@/components/nav-projects"
 import { NavUser } from "@/components/nav-user"
-import { TeamSwitcher } from "@/components/team-switcher"
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
   SidebarHeader,
   SidebarRail,
+  useSidebar,
 } from "@/components/ui/sidebar"
 
 // This is sample data.
@@ -156,6 +156,18 @@ const data = {
   ],
 }
 
+function SidebarFooterContent() {
+  const { state } = useSidebar()
+  
+  if (state === "collapsed") {
+    return null
+  }
+  
+  return (
+    <h1 className="text-sm">Provided  By <span className="text-xl font-medium">Alone</span></h1>
+  )
+}
+
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible="icon" {...props}>
@@ -166,8 +178,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavMain items={data.navMain} />
         <NavProjects projects={data.projects} />
       </SidebarContent>
-      <SidebarFooter >
-        <h1 className="text-sm">Provided  By <span className="text-xl font-medium">Alone</span></h1>
+      <SidebarFooter>
+        <SidebarFooterContent />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>

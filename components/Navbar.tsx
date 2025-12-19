@@ -26,36 +26,45 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Menu, Heart } from "lucide-react";
+import { Menu, Heart, CircleUser, ShoppingBag,  } from "lucide-react";
 import { Button } from "./ui/button";
 import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/all";
 import gsap from "gsap";
-import {motion} from "motion/react"
+import { motion } from "motion/react";
+import Link from "next/link";
+import { Badge } from "@/components/ui/badge";
+import { useCartStore } from "@/context/CartContext";
+import { useUserStore } from "@/context/UserContext";
 
 const MotionButton = motion.create(Button);
 
-
 export default function Navbar() {
+  const cartCount = useCartStore((state) =>
+    state.cartItems.reduce((total, item) => total + item.quantity, 0)
+  );
+  const user = useUserStore((state) => state.user);
   useGSAP(() => {
     const Brand = SplitText.create(".Brand", { type: "chars" });
     const t1 = gsap.timeline();
-    t1.from(Brand.chars,{
-      y:20,
-      stagger:0.04
-    })
+    t1.from(Brand.chars, {
+      y: 20,
+      stagger: 0.04,
+    });
     t1.from(".MenuT", {
       y: 50,
       opacity: 0,
       duration: 1,
-      stagger:0.3
+      stagger: 0.3,
     });
   });
-  
+
   return (
     <div className="p-5 fixed w-full top-0 z-10 flex items-center justify-between bg-white shadow-md">
       <div>
-        <h1 className="text-2xl font-bold Brand text-blue-500">Amir Shoes</h1>
+        <Link href={"/home"} className="text-2xl font-bold Brand text-blue-500">
+          Amir Shoes
+        </Link>
       </div>
 
       <div className="flex items-center gap-6 hidden lg:flex">
@@ -90,15 +99,43 @@ export default function Navbar() {
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
-      <div className="MenuT">
-          <MotionButton initial={{scale:1}}  whileHover={{scale:1.1}} className="bg-pink-500 text-white  font-semibold px-5 py-2 rounded-lg shadow-lg shadow-pink-300/50 hover:bg-pink-400 transition duration-300 ease-in-out">
-          Support Us
-        </MotionButton>
-      </div>
-      
+        <div className="MenuT">
+          <MotionButton
+            initial={{ scale: 1 }}
+            whileHover={{ scale: 1.1 }}
+            className="bg-pink-500 text-white  font-semibold px-5 py-2 rounded-lg shadow-lg shadow-pink-300/50 hover:bg-pink-400 transition duration-300 ease-in-out"
+          >
+            Support Us
+          </MotionButton>
+        </div>
+        <Button variant={"outline"}>
+          <CircleUser />
+          {user?.name || "Guest"}
+        </Button>
+        <Button variant={"ghost"} className="relative">
+          <ShoppingBag/>
+          {cartCount > 0 && (
+            <Badge className="absolute -top-2 -right-2 h-5 min-w-5 flex items-center justify-center px-1 text-xs">
+              {cartCount > 99 ? "99+" : cartCount}
+            </Badge>
+          )}
+          Cart
+        </Button>
       </div>
 
-      <div className="flex lg:hidden">
+      <div className="flex lg:hidden gap-4 items-center">
+        <Button variant={"outline"}>
+          <CircleUser />
+          {user?.name || "Guest"}
+        </Button>
+        <Button variant={"ghost"} className="relative">
+          <ShoppingBag/>
+          {cartCount > 0 && (
+            <Badge className="absolute -top-2 -right-2 h-5 min-w-5 flex items-center justify-center px-1 text-xs">
+              {cartCount > 99 ? "99+" : cartCount}
+            </Badge>
+          )}
+        </Button>
         <Sheet>
           <SheetTrigger asChild>
             <div className="MenuT">
@@ -138,7 +175,6 @@ export default function Navbar() {
               <Heart className="h-4 w-4 mb-1" />
               Support us
             </Button>
-
           </SheetContent>
         </Sheet>
       </div>

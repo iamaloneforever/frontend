@@ -28,9 +28,9 @@ useGSAP(() => {
 
 
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center ">
       <h1 className="text-center text-2xl">چرا ما ؟</h1>
-      <div className="grid benefits-grid lg:grid-cols-2 lg:grid-rows-3 my-20  gap-10 w-[60vw]">
+      <div className="grid benefits-grid lg:grid-cols-2  lg:grid-rows-3 my-20  gap-10 w-[60vw] h-fit">
         <MotionCard
           initial={{ scale: 1 }}
           whileHover={{
@@ -43,7 +43,7 @@ useGSAP(() => {
           className="bg-green-600 CardA text-white"
         >
           
-          <CardHeader className="flex flex-col gap-10 items-center">
+          <CardHeader className="flex flex-col gap-10 items-center justify-center">
             <Truck className="h-10 w-10" />
             <h1 className="text-2xl">سرعت در ارسال</h1>
           </CardHeader>
@@ -77,7 +77,7 @@ useGSAP(() => {
             boxShadow: "10px 10px 20px #3385FF",
           }}
         >
-          <CardHeader className="flex flex-col gap-10 items-center">
+          <CardHeader className="flex flex-col gap-10 items-center justify-center">
             <Shield className="h-10 w-10" />
             <h1 className="text-2xl">سلامت کالا</h1>
           </CardHeader>

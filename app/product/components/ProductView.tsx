@@ -32,6 +32,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { toast } from "sonner";
+import { useParams } from "next/navigation";
+import { useCartStore } from "@/context/CartContext";
 
 type ColorType = {
   name: string;
@@ -39,6 +41,10 @@ type ColorType = {
 };
 
 export default function ProductView() {
+  const params = useParams();
+  const productId = params?.id as string || "unknown";
+  const addToCart = useCartStore((state) => state.addToCart);
+  
   const colors: ColorType[] = [
     { name: "مشکی", value: "#000000" },
     { name: "زرد", value: "#eab308" },
@@ -46,6 +52,15 @@ export default function ProductView() {
   ];
 
   const [selectedColor, setSelectedColor] = useState<ColorType>(colors[0]);
+
+  const handleAddToCart = () => {
+    addToCart({
+      id: productId,
+      name: "Nike Model 1012",
+      price: 4000000,
+    });
+    toast.success("به سبد خرید اضافه شد");
+  };
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3  gap-10 p-10">
@@ -156,7 +171,7 @@ export default function ProductView() {
           </h1>
 
           <Button
-            onClick={() => toast.success("به سبد خرید اضافه شد")}
+            onClick={handleAddToCart}
             className="w-full my-5"
           >
             خرید
@@ -212,12 +227,9 @@ export default function ProductView() {
         </h1>
         <Button
           className="bg-blue-400 w-1/2"
-          onClick={() =>
-            toast.success("به سبد خرید اضافه شد", {
-              position: "top-center",
-              duration: 3000,
-            })
-          }
+          onClick={() => {
+            handleAddToCart();
+          }}
         >
           خرید
         </Button>
