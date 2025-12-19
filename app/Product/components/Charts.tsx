@@ -46,7 +46,7 @@ const chartConfig = {
 
 export function Charts() {
   return (
-    <div className="mx-10 grid gap-10 lg:grid-cols-2  grid-rows-2">
+    <div className="mx-10 grid gap-10 lg:grid-cols-2  grid-cols-1">
       <Card className="">
         <CardHeader>
           <CardTitle>Line Chart</CardTitle>

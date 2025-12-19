@@ -2,6 +2,7 @@ import Details from "../components/Details";
 import ProductView from "../components/ProductView";
 import { Charts } from "../components/Charts";
 import { Separator } from "@/components/ui/separator";
+import Scene from "../components/ShoeModel";
 
 interface ProductPageProps {
   params: {
@@ -32,6 +33,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
       <Details/>
       <Separator className="my-10"/>
       <Charts/>
+      <Scene/>
     </div>
   );
 }
