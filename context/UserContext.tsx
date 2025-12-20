@@ -17,12 +17,12 @@ interface UserStore {
 }
 
 export const useUserStore = create<UserStore>((set) => ({
-  user: {
-    id:1,
-    name:"amir",
-    email: "amir",
-    avatar: "./"
-  },
+  user: null,
+    // id:1,
+    // name:"amir",
+    // email: "amir",
+    // avatar: "./"
+
   isAuthenticated: false,
 
   login: (userData) => {

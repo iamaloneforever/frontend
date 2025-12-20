@@ -77,7 +77,7 @@ export default function Navbar() {
         </Link>
       </div>
 
-      <div className="flex items-center gap-6 hidden lg:flex">
+      <div className="items-center gap-6 hidden lg:flex">
         <NavigationMenu viewport={false}>
           <NavigationMenuList className="flex gap-4">
             <NavigationMenuItem>
@@ -119,11 +119,23 @@ export default function Navbar() {
           </MotionButton>
         </div>
         <div className="MenuTD">
-          <Button variant={"outline"}>
-            <CircleUser />
-            {user?.name || "Guest"}
-          </Button>
+        {user ? (
+            <Button variant={"outline"} asChild>
+              <Link href="/dashboard">
+                {" "}
+                <CircleUser /> {user.name}
+              </Link>
+            </Button>
+          ) : (
+            <Button variant={"outline"} asChild>
+              <Link href="/auth/login">
+                <LogIn />
+                Login
+              </Link>
+            </Button>
+          )}
         </div>
+       
         <div className="MenuTD">
           <Button variant={"ghost"} className="relative">
             <ShoppingBag />

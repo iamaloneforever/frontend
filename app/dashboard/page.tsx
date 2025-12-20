@@ -1,3 +1,4 @@
+"use client"
 import { AppSidebar } from "@/components/app-sidebar"
 import {
   Breadcrumb,
@@ -7,14 +8,28 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
+import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
+import { useUserStore } from "@/context/UserContext";
+import Link from "next/link";
 
 export default function Page() {
+  const user = useUserStore((state) => state.user);
+  if (!user)
+    return (
+      <div className="h-screen flex items-center justify-center flex-col gap-10">
+        <h1 className="text-5xl">You Cant Be Here</h1>
+        <Button className="w-1/3 h-10">
+          <Link href={"/home"}>Home</Link>
+        </Button>
+        
+      </div>
+    );
   return (
     <SidebarProvider className="my-20">
       <AppSidebar />
