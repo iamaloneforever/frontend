@@ -72,7 +72,7 @@ export default function Navbar() {
   return (
     <div className="p-5 fixed w-full top-0 z-10 flex items-center justify-between bg-white shadow-md">
       <div>
-        <Link href={"/home"} className="text-2xl font-bold Brand text-blue-500">
+        <Link href={"/home"} className="text-2xl pl-10 font-bold Brand text-blue-500">
           Amir Shoes
         </Link>
       </div>
