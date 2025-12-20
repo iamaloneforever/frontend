@@ -26,7 +26,14 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Menu, Heart, CircleUser, ShoppingBag, LogIn } from "lucide-react";
+import {
+  Menu,
+  Heart,
+  CircleUser,
+  ShoppingBag,
+  LogIn,
+  Search,
+} from "lucide-react";
 import { Button } from "./ui/button";
 import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/all";
@@ -36,6 +43,16 @@ import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { useCartStore } from "@/context/CartContext";
 import { useUserStore } from "@/context/UserContext";
+import {
+  Dialog,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogContent,
+  DialogDescription,
+} from "./ui/dialog";
+import { Input } from "./ui/input";
+import { Label } from "./ui/label";
 
 const MotionButton = motion.create(Button);
 
@@ -72,7 +89,10 @@ export default function Navbar() {
   return (
     <div className="p-5 fixed w-full top-0 z-10 flex items-center justify-between bg-white shadow-md">
       <div>
-        <Link href={"/home"} className="text-2xl pl-10 font-bold Brand text-blue-500">
+        <Link
+          href={"/home"}
+          className="text-2xl pl-10 font-bold Brand text-blue-500"
+        >
           Amir Shoes
         </Link>
       </div>
@@ -119,7 +139,7 @@ export default function Navbar() {
           </MotionButton>
         </div>
         <div className="MenuTD">
-        {user ? (
+          {user ? (
             <Button variant={"outline"} asChild>
               <Link href="/dashboard">
                 {" "}
@@ -135,7 +155,7 @@ export default function Navbar() {
             </Button>
           )}
         </div>
-       
+
         <div className="MenuTD">
           <Button variant={"ghost"} className="relative">
             <ShoppingBag />
@@ -146,6 +166,35 @@ export default function Navbar() {
             )}
             Cart
           </Button>
+        </div>
+        <div className="MenuTD">
+          <Dialog>
+            <form>
+              <DialogTrigger asChild>
+                <Button variant={"outline"}>
+                  <Search />
+                </Button>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>Search</DialogTitle>
+                  <DialogDescription>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Delectus adipisci consectetur, minus autem reiciendis sed,
+                    voluptatem quo quod nisi saepe dignissimos repudiandae error
+                    quia tempore iste! Vel praesentium rem harum?
+                  </DialogDescription>
+                </DialogHeader>
+
+                <div className="flex w-full items-center gap-2">
+                  <Input type="text" placeholder="Search For Brand Or Shoe" />
+                  <Button type="submit" variant="outline"  >
+                    <Search/>
+                  </Button>
+                </div>
+              </DialogContent>
+            </form>
+          </Dialog>
         </div>
       </div>
 
@@ -176,6 +225,7 @@ export default function Navbar() {
               </Badge>
             )}
           </Button>
+          
         </div>
 
         <Sheet>
@@ -213,12 +263,20 @@ export default function Navbar() {
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
+            <div className="flex w-full items-center gap-2 px-10 my-4">
+                  <Input type="text" placeholder="Search For Brand Or Shoe" />
+                  <Button type="submit" variant="outline"  >
+                    <Search/>
+                  </Button>
+            </div>
             <Button className="bg-gradient-to-r  from-pink-400 mx-10 to-pink-600 hover:to-pink-700 hover:from-pink-500 text-white">
               <Heart className="h-4 w-4 mb-1" />
               Support us
             </Button>
+            
           </SheetContent>
         </Sheet>
+       
       </div>
     </div>
   );
