@@ -54,11 +54,7 @@ export default function ProductView() {
   const [selectedColor, setSelectedColor] = useState<ColorType>(colors[0]);
 
   const handleAddToCart = () => {
-    addToCart({
-      id: productId,
-      name: "Nike Model 1012",
-      price: 4000000,
-    });
+    addToCart(productId);
     toast.success("به سبد خرید اضافه شد");
   };
 

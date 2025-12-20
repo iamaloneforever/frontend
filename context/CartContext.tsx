@@ -1,16 +1,15 @@
 "use client";
 import { create } from "zustand";
 
+/** فقط id و quantity */
 export interface CartItem {
   id: string;
-  name: string;
   quantity: number;
-  price: number;
 }
 
 interface CartStore {
   cartItems: CartItem[];
-  addToCart: (item: Omit<CartItem, "quantity">) => void;
+  addToCart: (id: string) => void;
   removeFromCart: (id: string) => void;
   updateQuantity: (id: string, quantity: number) => void;
   getCartCount: () => number;
@@ -18,32 +17,27 @@ interface CartStore {
 }
 
 export const useCartStore = create<CartStore>((set, get) => ({
-  cartItems: [
-    { id: "1", name: "Nike Air Max", quantity: 1, price: 120 },
-    { id: "2", name: "Adidas UltraBoost", quantity: 1, price: 150 },
-    { id: "3", name: "Puma RS-X", quantity: 1, price: 100 },
-    { id: "4", name: "Test Shoe", quantity: 1, price: 80 },
-  ],
+  cartItems: [],
 
-  addToCart: (item) => {
+  addToCart: (id) => {
     set((state) => {
-      const existingItem = state.cartItems.find((i) => i.id === item.id);
-      if (existingItem) {
+      const existing = state.cartItems.find((i) => i.id === id);
+      if (existing) {
         return {
           cartItems: state.cartItems.map((i) =>
-            i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
+            i.id === id ? { ...i, quantity: i.quantity + 1 } : i
           ),
         };
       }
       return {
-        cartItems: [...state.cartItems, { ...item, quantity: 1 }],
+        cartItems: [...state.cartItems, { id, quantity: 1 }],
       };
     });
   },
 
   removeFromCart: (id) => {
     set((state) => ({
-      cartItems: state.cartItems.filter((item) => item.id !== id),
+      cartItems: state.cartItems.filter((i) => i.id !== id),
     }));
   },
 
@@ -53,17 +47,14 @@ export const useCartStore = create<CartStore>((set, get) => ({
       return;
     }
     set((state) => ({
-      cartItems: state.cartItems.map((item) =>
-        item.id === id ? { ...item, quantity } : item
+      cartItems: state.cartItems.map((i) =>
+        i.id === id ? { ...i, quantity } : i
       ),
     }));
   },
 
-  getCartCount: () => {
-    return get().cartItems.reduce((total, item) => total + item.quantity, 0);
-  },
+  getCartCount: () =>
+    get().cartItems.reduce((total, item) => total + item.quantity, 0),
 
-  clearCart: () => {
-    set({ cartItems: [] });
-  },
+  clearCart: () => set({ cartItems: [] }),
 }));

@@ -31,7 +31,9 @@ import Link from "next/link";
 export function NavUser({}) {
   const user = useUserStore((state) => state.user);
   const { isMobile } = useSidebar();
-
+  if(!user){
+    return null
+  }
   return (
     <SidebarMenu>
       <SidebarMenuItem>

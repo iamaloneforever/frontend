@@ -19,12 +19,8 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 export default function Hero() {
   const addToCart = useCartStore((state) => state.addToCart);
 
-  const handleAddToCart = (productName: string, productId: string) => {
-    addToCart({
-      id: productId,
-      name: productName,
-      price: 2000000,
-    });
+  const handleAddToCart = (productId: string) => {
+    addToCart(productId)
     toast.success("به سبد خرید اضافه شد");
   };
 
@@ -86,7 +82,7 @@ export default function Hero() {
                 <Button
                   size={"lg"}
                   className="bg-red-800 hover:bg-pink-700 hover:shadow-2xl shadow-pink-400 hover:scale-110"
-                  onClick={() => handleAddToCart("Fly With Adidas", "hero-adidas")}
+                  onClick={() => handleAddToCart("2")}
                 >
                   <ShoppingCart className="h-5 w-5 mb-1" />
                   <h1 className="font-bold">Buy Now</h1>
@@ -111,7 +107,7 @@ export default function Hero() {
                 <Button
                   size={"lg"}
                   className="bg-blue-800 hover:bg-blue-700 hover:shadow-2xl shadow-blue-400 hover:scale-110"
-                  onClick={() => handleAddToCart("Fly With Nike", "hero-nike")}
+                  onClick={() => handleAddToCart("2")}
                 >
                   <ShoppingCart className="h-5 w-5 mb-1" />
                   <h1 className="font-bold">Buy Now</h1>

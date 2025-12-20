@@ -26,14 +26,11 @@ export default function ShowcaseProduct({title}:ShowProductProps) {
   const items = ["hello", "world", "foo", "bar"];
   const addToCart = useCartStore((state) => state.addToCart);
 
-  const handleAddToCart = (item: string, index: number) => {
-    addToCart({
-      id: `showcase-${index}`,
-      name: item,
-      price: 1000000 + (index * 100000), // Example pricing
-    });
+  const handleAddToCart = (item: string) => {
+    addToCart(item); // Cart فقط id ذخیره می‌کنه، پس می‌تونیم item رو id در نظر بگیریم
     toast.success("به سبد خرید اضافه شد");
   };
+  
 
   return (
     <div className="m-20">
@@ -76,7 +73,8 @@ export default function ShowcaseProduct({title}:ShowProductProps) {
                 <Button 
                   size="lg" 
                   className="bg-blue-500 hover:bg-blue-400"
-                  onClick={() => handleAddToCart(item, id)}
+                  onClick={() => handleAddToCart(item)}
+
                 >
                   <ShoppingCart className="h-5 w-5 mb-1" />{" "}
                   Buy Now
