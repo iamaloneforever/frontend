@@ -26,11 +26,11 @@ export default function Products() {
     <div className='grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 gap-10 m-5'>
       {items.map((item, id) => (
         <Link key={id} href={`/product/${item}`} className="block">
-          <Card className="cursor-pointer hover:shadow-lg transition">
+          <Card className="cursor-pointerhover:shadow-lg transition">
             <CardHeader>
               <Image
                 src={"/Hero.png"}
-                width={300}
+                width={500}
                 height={200}
                 alt="Hero Photo"
               />
