@@ -26,7 +26,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 export default function CartCard() {
   return (
-    <div className="flex items-center m-4  justify-center flex-col">
+    <div className="flex items-center my-10 mx-5 r flex-col">
       {/* INFO */}
       <Card className="lg:block w-full  border-0 shadow-none ">
         <CardHeader>

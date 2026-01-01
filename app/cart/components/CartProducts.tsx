@@ -18,7 +18,7 @@ export default function CartProducts() {
   const [qty, setQty] = useState(1);
 
   return (
-    <div className="flex items-center m-4 col-span-2 justify-center flex-col">
+    <div className="flex items-center mx-1 col-span-2 my-10 flex-col">
       <Separator />
 
       <div className="my-10  grid grid-cols-1 md:grid-cols-4 gap-6 w-full items-center">
