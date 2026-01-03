@@ -12,8 +12,10 @@ import { Button } from '@/components/ui/button';
 import { useCartStore } from "@/context/CartContext";
 import { toast } from 'sonner';
 import { ShoppingCart } from 'lucide-react';
-
-export default function Products() {
+interface ProductsProps {
+  searchQuery: string; // or query: string
+}
+export default function Products({searchQuery}:ProductsProps) {
   const addToCart = useCartStore((state) => state.addToCart);
   const items = ["hello", "world", "foo", "bar","hello","hello","hello"];
 
@@ -24,6 +26,7 @@ export default function Products() {
 
   return (
     <div className='grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 gap-10 m-5'>
+     
       {items.map((item, id) => (
         <Link key={id} href={`/product/${item}`} className="block">
           <Card className="cursor-pointerhover:shadow-lg transition">

@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -53,11 +53,12 @@ import {
 } from "./ui/dialog";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
-import { Separator } from "@radix-ui/react-separator";
-
+import { useRouter } from "next/navigation";
 const MotionButton = motion.create(Button);
 
 export default function Navbar() {
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const router = useRouter();
   const cartCount = useCartStore((state) =>
     state.cartItems.reduce((total, item) => total + item.quantity, 0)
   );
@@ -87,12 +88,25 @@ export default function Navbar() {
     });
   });
 
+  const [isOpen, setIsOpen] = useState(false);
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log(searchQuery)
+    
+
+    if (searchQuery === "") return;
+
+    router.push(`/search/${encodeURIComponent(searchQuery)}`);
+
+    setIsOpen(false);
+  };
+
   return (
     <div className="p-5 sticky  top-0 z-10 flex items-center justify-between bg-white shadow-md">
       <div>
         <Link
           href={"/home"}
-          className="text-2xl  font-bold Brand text-blue-500"
+          className="text-2xl ml-10  font-bold Brand text-blue-500"
         >
           Amir Shoes
         </Link>
@@ -156,46 +170,53 @@ export default function Navbar() {
             </Button>
           )}
         </div>
+        <Link href="/cart">
+          <div className="MenuTD">
+            <Button variant={"ghost"} className="relative">
+              <ShoppingBag />
+              {cartCount > 0 && (
+                <Badge className="absolute -top-2 -right-2 h-5 min-w-5 flex items-center justify-center px-1 text-xs">
+                  {cartCount > 99 ? "99+" : cartCount}
+                </Badge>
+              )}
+              Cart
+            </Button>
+          </div>
+        </Link>
 
         <div className="MenuTD">
-          <Button variant={"ghost"} className="relative">
-            <ShoppingBag />
-            {cartCount > 0 && (
-              <Badge className="absolute -top-2 -right-2 h-5 min-w-5 flex items-center justify-center px-1 text-xs">
-                {cartCount > 99 ? "99+" : cartCount}
-              </Badge>
-            )}
-            Cart
-          </Button>
-        </div>
-        <div className="MenuTD">
-          <Dialog>
-            <form>
-              <DialogTrigger asChild>
-                <Button variant={"outline"}>
-                  <Search />
-                </Button>
-              </DialogTrigger>
-              <DialogContent>
-                <DialogHeader>
-                  <DialogTitle>Search</DialogTitle>
-                  <DialogDescription>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Delectus adipisci consectetur, minus autem reiciendis sed,
-                    voluptatem quo quod nisi saepe dignissimos repudiandae error
-                    quia tempore iste! Vel praesentium rem harum?
-                  </DialogDescription>
-                </DialogHeader>
+        <Dialog open={isOpen} onOpenChange={setIsOpen}>
+  <DialogTrigger asChild>
+    <Button variant="outline">
+      <Search />
+    </Button>
+  </DialogTrigger>
 
-                <div className="flex w-full items-center gap-2">
-                  <Input type="text" placeholder="Search For Brand Or Shoe" />
-                  <Button type="submit" variant="outline"  >
-                    <Search/>
-                  </Button>
-                </div>
-              </DialogContent>
-            </form>
-          </Dialog>
+  <DialogContent>
+    <form onSubmit={handleSearch} className="flex flex-col gap-4">
+      <DialogHeader>
+        <DialogTitle>Search</DialogTitle>
+        <DialogDescription>
+          Search for your favorite brand or shoe.
+        </DialogDescription>
+      </DialogHeader>
+
+      <div className="flex w-full items-center gap-2">
+        <Input
+          type="text"
+          placeholder="Search For Brand Or Shoe"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+
+        <Button type="submit" variant="outline">
+          <Search />
+        </Button>
+      </div>
+    </form>
+  </DialogContent>
+</Dialog>
+
         </div>
       </div>
 
@@ -217,17 +238,18 @@ export default function Navbar() {
             </Button>
           )}
         </div>
-        <div className="MenuT">
-          <Button variant={"ghost"} className="relative">
-            <ShoppingBag />
-            {cartCount > 0 && (
-              <Badge className="absolute -top-2 -right-2 h-5 min-w-5 flex items-center justify-center px-1 text-xs">
-                {cartCount > 99 ? "99+" : cartCount}
-              </Badge>
-            )}
-          </Button>
-          
-        </div>
+        <Link href="/cart">
+          <div className="MenuT">
+            <Button variant={"ghost"} className="relative">
+              <ShoppingBag />
+              {cartCount > 0 && (
+                <Badge className="absolute -top-2 -right-2 h-5 min-w-5 flex items-center justify-center px-1 text-xs">
+                  {cartCount > 99 ? "99+" : cartCount}
+                </Badge>
+              )}
+            </Button>
+          </div>
+        </Link>
 
         <Sheet>
           <SheetTrigger asChild>
@@ -265,21 +287,18 @@ export default function Navbar() {
               </AccordionItem>
             </Accordion>
             <div className="flex w-full items-center gap-2 px-10 my-4">
-                  <Input type="text" placeholder="Search For Brand Or Shoe" />
-                  <Button type="submit" variant="outline"  >
-                    <Search/>
-                  </Button>
+              <Input type="text" placeholder="Search For Brand Or Shoe" />
+              <Button type="submit" variant="outline">
+                <Search />
+              </Button>
             </div>
             <Button className="bg-gradient-to-r  from-pink-400 mx-10 to-pink-600 hover:to-pink-700 hover:from-pink-500 text-white">
               <Heart className="h-4 w-4 mb-1" />
               Support us
             </Button>
-            
           </SheetContent>
         </Sheet>
-        
       </div>
-      
     </div>
   );
 }

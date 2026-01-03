@@ -21,12 +21,12 @@ export default function CartProducts() {
     <div className="flex items-center mx-1 col-span-2 my-10 flex-col">
       <Separator />
 
-      <div className="my-10  grid grid-cols-1 md:grid-cols-4 gap-6 w-full items-center">
-        <div className="flex justify-center">
+      <div className="my-10  grid grid-cols-2 md:grid-cols-4 gap-6 w-full items-center">
+        <div className="flex justify-center items-center">
           <Image src={CardImage} alt="product" className="max-w-[150px]" />
         </div>
 
-        <div className="h-full flex ">
+        <div className="h-full  flex justify-center items-center  ">
          
           <div className="mx-6">
             <h1 className="text-lg font-medium">Adidas Ultraboost</h1>
@@ -40,14 +40,14 @@ export default function CartProducts() {
          
         </div>
        
-        <div className="flex flex-col col-span-2  *:space-y-2 sm:flex-row sm:justify-between gap-4">
+        <div className="flex flex-col col-span-2  space-y-5  *:space-y-2 md:flex-row mx-4 md:justify-between lg:gap-4">
         <Separator className="md:hidden"/>
-          <div>
+          <div className="flex justify-center items-center flex-col">
             <Label className="text-gray-600">Each</Label>
             <h1 className="font-bold">$64</h1>
           </div>
 
-          <div className="space-y-2">
+          <div className="flex justify-center items-center flex-col">
             <Label className="text-gray-600">Quantity</Label>
             <Input
               type="number"
@@ -62,7 +62,7 @@ export default function CartProducts() {
             />
           </div>
 
-          <div>
+          <div className="flex justify-center items-center flex-col">
             <Label className="text-gray-600">Total</Label>
             <h1 className="font-bold">${64 * qty}</h1>
           </div>
