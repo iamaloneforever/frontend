@@ -20,7 +20,7 @@ export default function Page() {
         <header className="bg-background sticky border-t-2 top-20 z-50 flex h-16 shrink-0 items-center gap-2 border-b px-4">
           <SidebarTrigger className="ml-1" />
           <Separator orientation="vertical" className="mr-2 h-4" />
-          <h1>Search : <span className="font-bold text-xl">{query}</span></h1>
+          <h1>Search : <span className="font-bold text-xlawd">{query}</span></h1>
         </header>
 
         <Products  searchQuery={query}/>
