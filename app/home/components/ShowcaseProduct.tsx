@@ -17,12 +17,13 @@ import { Button } from "@/components/ui/button";
 import { ShoppingCart } from "lucide-react";
 import { useCartStore } from "@/context/CartContext";
 import { toast } from "sonner";
+import Link from "next/link";
 
 interface ShowProductProps {
-    title:string
+  title: string;
 }
 
-export default function ShowcaseProduct({title}:ShowProductProps) {
+export default function ShowcaseProduct({ title }: ShowProductProps) {
   const items = ["hello", "world", "foo", "bar"];
   const addToCart = useCartStore((state) => state.addToCart);
 
@@ -30,7 +31,6 @@ export default function ShowcaseProduct({title}:ShowProductProps) {
     addToCart(item); // Cart فقط id ذخیره می‌کنه، پس می‌تونیم item رو id در نظر بگیریم
     toast.success("به سبد خرید اضافه شد");
   };
-  
 
   return (
     <div className="m-20">
@@ -51,7 +51,7 @@ export default function ShowcaseProduct({title}:ShowProductProps) {
       >
         {items.map((item, id) => (
           <SwiperSlide key={id}>
-            <Card >
+            <Card>
               <CardHeader>
                 <Image
                   src={"/Hero.png"}
@@ -70,15 +70,11 @@ export default function ShowcaseProduct({title}:ShowProductProps) {
                 </p>
               </CardContent>
               <CardFooter className="flex justify-center">
-                <Button 
-                  size="lg" 
-                  className="bg-blue-500 hover:bg-blue-400"
-                  onClick={() => handleAddToCart(item)}
-
-                >
-                  <ShoppingCart className="h-5 w-5 mb-1" />{" "}
-                  Buy Now
-                </Button>
+                <Link href={`/product/${id}`}>
+                  <Button size="lg" className="bg-blue-500 hover:bg-blue-400">
+                    <ShoppingCart className="h-5 w-5 mb-1" /> Buy Now
+                  </Button>
+                </Link>
               </CardFooter>
             </Card>
           </SwiperSlide>
