@@ -82,7 +82,12 @@ export default function Hero() {
       },
       "-=0.4" // شروع 0.4 ثانیه قبل از پایان انیمیشن title → overlap
     );
-  
+    timeline.from(".ButtonA",{
+      opacity: 0,
+      y: 50,
+      duration: 0.5,
+      ease: "power2.out",
+    })
     // button (کلمات) → همزمان با description کمی تاخیر
     const ButtonText = SplitText.create(".ButtonText", { type: "words" });
     timeline.from(
@@ -113,14 +118,14 @@ export default function Hero() {
               <div className="flex p-10 space-y-5 flex-wrap items-center flex-col justify-center">
                 <h1 className="Title font-bold text-4xl">{slide.title}</h1>
                 <p className="desc text-sm text-center description">{slide.description}</p>
-                <div className="button">
+                <div className="ButtonA">
                   <Button
                     size={"lg"}
-                    className={`${slide.buttonColor} hover:scale-110 flex gap-2`}
+                    className={`${slide.buttonColor} hover:scale-110  flex gap-2`}
                     onClick={() => handleAddToCart(slide.product.id)}
                   >
                     <ShoppingCart className="h-5 w-5 mb-1 ButtonText" />
-                    <h1 className="font-bold ButtonText">Buy Now - ${slide.product.price}</h1>
+                    <h1 className="font-bold ButtonText ">Buy Now - ${slide.product.price}</h1>
                   </Button>
                 </div>
               </div>

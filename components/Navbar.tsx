@@ -91,8 +91,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(searchQuery)
-    
+    console.log(searchQuery);
 
     if (searchQuery === "") return;
 
@@ -156,7 +155,7 @@ export default function Navbar() {
         <div className="MenuTD">
           {user ? (
             <Button variant={"outline"} asChild>
-              <Link href="/dashboard">
+              <Link href="/dashboard/overview">
                 {" "}
                 <CircleUser /> {user.name}
               </Link>
@@ -185,38 +184,37 @@ export default function Navbar() {
         </Link>
 
         <div className="MenuTD">
-        <Dialog open={isOpen} onOpenChange={setIsOpen}>
-  <DialogTrigger asChild>
-    <Button variant="outline">
-      <Search />
-    </Button>
-  </DialogTrigger>
+          <Dialog open={isOpen} onOpenChange={setIsOpen}>
+            <DialogTrigger asChild>
+              <Button variant="outline">
+                <Search />
+              </Button>
+            </DialogTrigger>
 
-  <DialogContent>
-    <form onSubmit={handleSearch} className="flex flex-col gap-4">
-      <DialogHeader>
-        <DialogTitle>Search</DialogTitle>
-        <DialogDescription>
-          Search for your favorite brand or shoe.
-        </DialogDescription>
-      </DialogHeader>
+            <DialogContent>
+              <form onSubmit={handleSearch} className="flex flex-col gap-4">
+                <DialogHeader>
+                  <DialogTitle>Search</DialogTitle>
+                  <DialogDescription>
+                    Search for your favorite brand or shoe.
+                  </DialogDescription>
+                </DialogHeader>
 
-      <div className="flex w-full items-center gap-2">
-        <Input
-          type="text"
-          placeholder="Search For Brand Or Shoe"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
+                <div className="flex w-full items-center gap-2">
+                  <Input
+                    type="text"
+                    placeholder="Search For Brand Or Shoe"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                  />
 
-        <Button type="submit" variant="outline">
-          <Search />
-        </Button>
-      </div>
-    </form>
-  </DialogContent>
-</Dialog>
-
+                  <Button type="submit" variant="outline">
+                    <Search />
+                  </Button>
+                </div>
+              </form>
+            </DialogContent>
+          </Dialog>
         </div>
       </div>
 
@@ -224,7 +222,7 @@ export default function Navbar() {
         <div className="MenuT">
           {user ? (
             <Button variant={"outline"} asChild>
-              <Link href="/dashboard">
+              <Link href="/dashboard/overview">
                 {" "}
                 <CircleUser /> {user.name}
               </Link>
@@ -287,11 +285,18 @@ export default function Navbar() {
               </AccordionItem>
             </Accordion>
             <div className="flex w-full items-center gap-2 px-10 my-4">
-              <Input type="text" placeholder="Search For Brand Or Shoe" />
-              <Button type="submit" variant="outline">
+              <Input
+                type="text"
+                placeholder="Search For Brand Or Shoe"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+
+              <Button type="button" variant="outline" onClick={handleSearch}>
                 <Search />
               </Button>
             </div>
+
             <Button className="bg-gradient-to-r  from-pink-400 mx-10 to-pink-600 hover:to-pink-700 hover:from-pink-500 text-white">
               <Heart className="h-4 w-4 mb-1" />
               Support us

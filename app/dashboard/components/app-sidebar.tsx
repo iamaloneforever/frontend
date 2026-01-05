@@ -34,35 +34,35 @@ const data = {
   
     {
       title: "Dashboard",
-      url: "#",
+      url: "/dashboard/overview",
       icon: User2Icon,
       items: [
         {
           title: "Overview",
-          url: "#",
+          url: "/dashboard/overview",
         },
         {
           title: "Purchases",
-          url: "#",
+          url: "/dashboard/purchases",
         },
       ],
     },
     {
       title: "Settings",
-      url: "#",
+      url: "/dashboard/setting",
       icon: Settings2,
       items: [
         {
           title: "Account Settings",
-          url: "#",
+          url: "/dashboard/setting",
         },
         {
           title: "Preferences",
-          url: "#",
+          url: "/dashboard/preferences",
         },
         {
           title: "Billing",
-          url: "#",
+          url: "/dashboard/billing",
         }
       ],
     },
