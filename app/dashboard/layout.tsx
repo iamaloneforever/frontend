@@ -1,5 +1,6 @@
 "use client"
 import { AppSidebar } from "@/app/dashboard/components/app-sidebar"
+import CursorFollow from "@/components/smoothui/cursor-follow"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -31,7 +32,8 @@ export default function Page({ children }: { children: React.ReactNode }) {
       </div>
     );
   return (
-    <SidebarProvider className="my-20">
+    <CursorFollow  >
+    <SidebarProvider className="my-20" style={{cursor:"none"}}>
       <AppSidebar />
       <SidebarInset>
         <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
@@ -59,5 +61,6 @@ export default function Page({ children }: { children: React.ReactNode }) {
         {children}
       </SidebarInset>
     </SidebarProvider>
+    </CursorFollow>
   )
 }
