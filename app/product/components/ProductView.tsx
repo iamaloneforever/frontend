@@ -13,7 +13,15 @@ import {
   CardHeader,
 } from "@/components/ui/card";
 import Image from "next/image";
-import { Heart, Share2, MessageCircle, Flame, Truck, Shield, Package } from "lucide-react";
+import {
+  Heart,
+  Share2,
+  MessageCircle,
+  Flame,
+  Truck,
+  Shield,
+  Package,
+} from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
@@ -34,7 +42,11 @@ import {
 import { toast } from "sonner";
 import { useParams } from "next/navigation";
 import { useCartStore } from "@/context/CartContext";
-
+import {
+  FlipButton,
+  FlipButtonBack,
+  FlipButtonFront,
+} from '@/components/animate-ui/primitives/buttons/flip';
 type ColorType = {
   name: string;
   value: string;
@@ -42,9 +54,9 @@ type ColorType = {
 
 export default function ProductView() {
   const params = useParams();
-  const productId = params?.id as string || "unknown";
+  const productId = (params?.id as string) || "unknown";
   const addToCart = useCartStore((state) => state.addToCart);
-  
+
   const colors: ColorType[] = [
     { name: "مشکی", value: "#000000" },
     { name: "زرد", value: "#eab308" },
@@ -106,8 +118,8 @@ export default function ProductView() {
             پرطرفدار
           </Badge>
           <Badge variant={"outline"} className="lg:hidden">
-          <Truck className="h-4 w-4 mr-1" />
-          ارسال فوری
+            <Truck className="h-4 w-4 mr-1" />
+            ارسال فوری
           </Badge>
         </div>
 
@@ -166,12 +178,14 @@ export default function ProductView() {
             </span>
           </h1>
 
-          <Button
-            onClick={handleAddToCart}
-            className="w-full my-5"
-          >
-            خرید
-          </Button>
+          <FlipButton className="w-full my-3">
+          <FlipButtonFront className="bg-primary text-white px-4 w-full py-1 rounded-sm">
+            Front
+          </FlipButtonFront>
+          <FlipButtonBack className="bg-black text-white px-4 w-full py-1 rounded-sm">
+            Back
+          </FlipButtonBack>
+        </FlipButton>
 
           <div className="flex items-center justify-end gap-3">
             <span>۷ روز ضمانت بازگشت</span>
@@ -212,23 +226,20 @@ export default function ProductView() {
         </CardContent>
       </Card>
       <div className="fixed bottom-0 px-2 bg-white left-0 w-full z-20 h-20 border-t-2 items-center lg:hidden flex justify-between">
-        
         <h1 className="text-sm flex items-center justify-end">
-          
           تومان
           <span className="ml-2 text-2xl text-blue-500">
             {(4000000).toLocaleString()}
           </span>
-          
         </h1>
-        <Button
-          className="bg-blue-400 w-1/2"
-          onClick={() => {
-            handleAddToCart();
-          }}
-        >
-          خرید
-        </Button>
+        <FlipButton>
+          <FlipButtonFront className="bg-primary text-white px-12 py-1 rounded-sm">
+            Front
+          </FlipButtonFront>
+          <FlipButtonBack className="bg-black text-white px-12 py-1 rounded-sm">
+            Back
+          </FlipButtonBack>
+        </FlipButton>
       </div>
     </div>
   );

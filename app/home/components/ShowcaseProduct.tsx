@@ -18,7 +18,11 @@ import { ShoppingCart } from "lucide-react";
 import { useCartStore } from "@/context/CartContext";
 import { toast } from "sonner";
 import Link from "next/link";
-
+import {
+  FlipButton,
+  FlipButtonBack,
+  FlipButtonFront,
+} from "@/components/animate-ui/primitives/buttons/flip";
 interface ShowProductProps {
   title: string;
 }
@@ -71,9 +75,10 @@ export default function ShowcaseProduct({ title }: ShowProductProps) {
               </CardContent>
               <CardFooter className="flex justify-center">
                 <Link href={`/product/${id}`}>
-                  <Button size="lg" className="bg-blue-500 hover:bg-blue-400">
-                    <ShoppingCart className="h-5 w-5 mb-1" /> Buy Now
-                  </Button>
+                  <FlipButton>
+                    <FlipButtonFront className="bg-primary text-white px-12 py-1 rounded-sm">Front</FlipButtonFront>
+                    <FlipButtonBack className="bg-black text-white px-12 py-1 rounded-sm">Back</FlipButtonBack>
+                  </FlipButton>
                 </Link>
               </CardFooter>
             </Card>

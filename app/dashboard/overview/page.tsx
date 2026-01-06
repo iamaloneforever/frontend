@@ -3,7 +3,7 @@ import React from "react";
 import Charts from "./components/Charts";
 import { useUserStore } from "@/context/UserContext";
 import PurchassStatus from "./components/PurchassStatus";
-import TypewriterText from "@/components/smoothui/typewriter-text";
+import {TypingText} from "@/components/animate-ui/primitives/texts/typing";
 
 
 
@@ -13,9 +13,7 @@ export default function page() {
     
     <div className="m-10 space-y-10 "  >
       <div>
-      <TypewriterText speed={100} className="font-bold  text-2xl">
-        {`Welcome Back ${user!.name}`}
-      </TypewriterText>
+      <TypingText className="font-bold text-2xl" text= {`Welcome Back ${user!.name}`} />
       </div>
     
       <Charts />

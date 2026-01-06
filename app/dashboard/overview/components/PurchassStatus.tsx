@@ -1,8 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import React from "react";
-import { CountingNumber } from "@/components/ui/shadcn-io/counting-number/index";
-import CursorFollow from "@/components/smoothui/cursor-follow";
+
+import {
+  FlipButton,
+  FlipButtonBack,
+  FlipButtonFront,
+} from '@/components/animate-ui/primitives/buttons/flip';
+import { CountingNumber } from "@/components/animate-ui/primitives/texts/counting-number";
 export default function PurchassStatus() {
   return (
     
@@ -19,12 +23,19 @@ export default function PurchassStatus() {
             number={4}
             inView={true}
             transition={{ stiffness: 100, damping: 30 }}
-            data-cursor-text={"Thank You For Chosing us"}
+            
           />
           ;
         </CardContent>
         <CardContent>
-          <Button className="w-full" style={{cursor:"none"}}>See Details</Button>
+        <FlipButton className="w-full">
+          <FlipButtonFront className="bg-primary text-white w-full px-4 py-1 rounded-sm">
+            Front
+          </FlipButtonFront>
+          <FlipButtonBack className="bg-black text-white w-full px-4 py-1 rounded-sm">
+            Back
+          </FlipButtonBack>
+        </FlipButton>
         </CardContent>
       </Card>
       <Card>
@@ -36,12 +47,19 @@ export default function PurchassStatus() {
             number={1}
             inView={true}
             transition={{ stiffness: 100, damping: 30 }}
-            data-cursor-text={"They Will Arrive Soon"}
+          
           />
           ;
         </CardContent>
         <CardContent>
-          <Button className="w-full">See Details</Button>
+        <FlipButton className="w-full">
+          <FlipButtonFront className="bg-primary text-white w-full px-4 py-1 rounded-sm">
+            Front
+          </FlipButtonFront>
+          <FlipButtonBack className="bg-black text-white w-full px-4 py-1 rounded-sm">
+            Back
+          </FlipButtonBack>
+        </FlipButton>
         </CardContent>
       </Card>
       <Card>
@@ -53,12 +71,19 @@ export default function PurchassStatus() {
             number={0}
             inView={true}
             transition={{ stiffness: 100, damping: 30 }}
-            data-cursor-text={"Please Buy Them"}
+           
           />
           ;
         </CardContent>
         <CardContent>
-          <Button className="w-full">See Details</Button>
+        <FlipButton className="w-full">
+          <FlipButtonFront className="bg-primary text-white w-full px-4 py-1 rounded-sm">
+            Front
+          </FlipButtonFront>
+          <FlipButtonBack className="bg-black text-white w-full px-4 py-1 rounded-sm">
+            Back
+          </FlipButtonBack>
+        </FlipButton>
         </CardContent>
       </Card>
     </div>
