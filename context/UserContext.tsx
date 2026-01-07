@@ -21,7 +21,7 @@ export const useUserStore = create<UserStore>((set) => ({
     id:1,
     name:"amir",
     email: "amir",
-    avatar: "./"
+    avatar: "https://picsum.photos/80/80"
   },
 
   isAuthenticated: false,

@@ -1,27 +1,30 @@
 "use client";
 
 import { Separator } from "@/components/ui/separator";
-import { CountingNumber } from "@/components/ui/shadcn-io/counting-number";
+import { CountingNumber } from "@/components/animate-ui/primitives/texts/counting-number";
 import { useMediaQuery } from "react-responsive";
 import { useEffect, useState } from "react";
 
 export default function Statics() {
-  const [mounted, setMounted] = useState(false); // فقط بعد از mount رندر می‌کنیم
+  const [mounted, setMounted] = useState(false); 
   const isDesktop = useMediaQuery({ minWidth: 768 });
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
+  // فرض می‌کنیم این داده‌ها از API یا state گرفته شده
+  const totalPurchases = 87;       // تعداد کل خریدها
+  const totalProducts = 1500;      // تعداد کل محصولات خریداری شده
+  const totalPaid = 12000;         // کل مبلغ پرداختی
+
   const stats = [
-    { value: 12000, title: "Users", color: "text-blue-500" },
-    { value: 1500, title: "Projects", color: "text-green-500" },
-    { value: 87, title: "Awards", color: "text-red-500" },
+    { value: totalPurchases, title: "تعداد کل خریدها", color: "text-blue-500" },
+    { value: totalProducts, title: "کل محصولات خریداری شده", color: "text-green-500" },
+    { value: totalPaid, title: "کل مبلغ پرداختی (تومان)", color: "text-red-500" },
   ];
 
-  const formatNumber = (num: number) => num.toLocaleString();
-
-  if (!mounted) return null; // تا mount نشه چیزی رندر نمی‌کنه → no hydration mismatch
+  if (!mounted) return null; 
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
@@ -35,10 +38,9 @@ export default function Statics() {
             decimalPlaces={0}
             padStart
             inView
+            locale="fa-IR"  // نمایش اعداد فارسی
             className="text-3xl font-bold"
-          >
-            {formatNumber(stat.value)}
-          </CountingNumber>
+          />
 
           {idx !== stats.length - 1 &&
             (isDesktop ? (
